@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletos</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        {% if boletos %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>|Precio|</th>
+                    <th>Hora de Viaje|</th>
+                    <th>Fecha|</th>
+                    <th>Origen|</th>
+                    <th>Destino|</th>
+                    <th>Asiento|</th>
+                    <th>Matricula|</th>
+                    <th>Tipo de Bus|</th>
+                    <th>Empresa|</th>
+                    <th>Nombre|</th>
+                    <th>Rut|</th>
+                    <th>Tipo de Pasajero|</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for boleto in boletos %}
+                <tr>
+                    <td>{{ boleto.Precio }}</td>
+                    <td>{{ boleto.Hora_Viaje }}</td>
+                    <td>{{ boleto.Fecha_Viaje }}</td>
+                    <td>{{ boleto.Destino }}</td>
+                    <td>{{ boleto.Origen }}</td>
+                    <td>{{ boleto.Numero_de_Asiento }}</td>
+                    <td>{{ boleto.bus.Matricula }}</td>
+                    <td>{{ boleto.bus.Tipo_de_bus }}</td>
+                    <td>{{ boleto.bus.Empresa }}</td>
+                    <td>{{ boleto.pasajero.nombre }}</td>
+                    <td>{{ boleto.pasajero.rut }}</td>
+                    <td>{{ boleto.pasajero.tipoPasajero }}</td>
+                    <td><a href="/Actualizar_Boletos/{{ boleto.id }}">ACTUALIZAR</a></td>
+                    <td><a href="/Eliminar_Boletos/{{ boleto.id }}">ELIMINAR</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div role="alert">
+            <strong>No se encuentran Boletos en el sistema</strong>
+        </div>
+        {% endif %}
+        <a href="Registrar_Boletos/">Registrar</a>
+        <a href="../">Volver</a>
+    </div>
+</body>
+</html>

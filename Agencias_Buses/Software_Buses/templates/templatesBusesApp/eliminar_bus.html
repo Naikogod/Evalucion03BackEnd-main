@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Autobús</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Eliminar Autobús</h1>
+        <p>¿Estás seguro de que deseas eliminar el autobús con matrícula "{{ bus.Matricula }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        <a href="{% url 'mostrar_buses' %}" class="btn">Mostrar</a>
+    </div>
+</body>
+</html>

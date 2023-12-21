@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Autobuses</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Autobuses</h1>
+        <a href="{% url 'registrar_bus' %}" class="btn">Registrar</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Matrícula</th>
+                    <th>Nombre Chofer</th>
+                    <th>Número de Asientos</th>
+                    <th>Año</th>
+                    <th>Marca</th>
+                    <th>Tipo de Bus</th>
+                    <th>Empresa</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bus in buses %}
+                    <tr>
+                        <td>{{ bus.Matricula }}</td>
+                        <td>{{ bus.Nombre_Chofer }}</td>
+                        <td>{{ bus.Numero_de_Asientos }}</td>
+                        <td>{{ bus.Año }}</td>
+                        <td>{{ bus.Marca }}</td>
+                        <td>{{ bus.Tipo_de_bus }}</td>
+                        <td>{{ bus.Empresa }}</td>
+                        <td>
+                            <a href="{% url 'modificar_bus' bus.id %}" class="btn">Modificar</a>
+                            <a href="{% url 'eliminar_bus' bus.id %}" class="btn">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
