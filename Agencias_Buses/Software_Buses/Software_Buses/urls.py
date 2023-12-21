@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import path, include
 from PasajerosApp import views as PasajerosApp
 from BusesApp import views as BusesApp
 from BoletosApp import views as BoletosApp
@@ -40,4 +41,5 @@ urlpatterns = [
     path('Mostrar_Boletos', BoletosApp.ListadoBoletos),
     path('Actualizar_Boletos/<int:id>', BoletosApp.ActualizarBoletos), #No carga Template Propio/ redirigen a Mostrar
     path('Eliminar_Boletos/<int:id>', BoletosApp.EliminarBoletos), #No carga Template Propio/ redirigen a Mostrar
+    path('api/', include('api.urls')),
 ]
